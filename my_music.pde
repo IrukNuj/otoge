@@ -9,7 +9,7 @@ void setup_music() {
     song = minim.loadFile("DAOKO × 米津玄師『打上花火』MUSIC VIDEO.mp3"); //song = minim.loadFile("marcus_kellis_theme.mp3", 1024);
     //song = minim.loadFile("eine.mp3", 1024);
     //song = minim.loadFile("Beautiful_Woman.mp3");//Densitosi.mp3");
-    //beat = new BeatDetect(); rectMode(CENTER);
+    beat = new BeatDetect(); rectMode(CENTER);
     bww = box_w;
     bhh = box_h;
 }

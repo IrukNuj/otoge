@@ -57,54 +57,46 @@ void draw()
 
  draw_image_processing();
 
- if(state == -1)
- {
- text("Press p-key to start a game!", width/2, height/2);
+ if(state == -1) {
+    text("Press p-key to start a game!", width/2, height/2);
+ }else if(state == 3) {  
+    //play game if(abs(my_timer - falling_time - btime[index]) < 0.01){
+    add_box(btype[index]);
+    index++;
  }
- else if(state == 3)
- { //play game
- if(abs(my_timer - falling_time - btime[index]) < 0.01)
- {
- add_box(btype[index]);
- index++;
- }
-
  if (index >= a.getRowCount() ) index = 0;
-
  draw_my_game();
-
  text(my_timer, width/2, 20);
  my_timer = my_timer + 1.0/60.0;
  }
-}
 void draw_my_game() {
- // Display all the boundaries
- for (Boundary wall: boundaries) {
- wall.display();
- }
- // Display all the boxes
- for (Box b: boxes) {
- b.display();
- b.display_goal();
- }
- for (int i = boxes.size()-1; i >= 0; i--) {
- Box b = boxes.get(i);
+    // Display all the boundaries
+    for (Boundary wall: boundaries) {
+    wall.display();
+    }
+    // Display all the boxes
+    for (Box b: boxes) {
+    b.display();
+    b.display_goal();
+    }
+    for (int i = boxes.size()-1; i >= 0; i--) {
+    Box b = boxes.get(i);
 
- if(b.compare()){
- boxes.remove(i);
- }
+    if(b.compare()){
+    boxes.remove(i);
+    }
 
- if (b.done()) {
- boxes.remove(i);
- }
- }
+    if (b.done()) {
+    boxes.remove(i);
+    }
+    }
 
- stroke(255, 128);
- line(0, goal_y, width, goal_y);
- line(0, start_y, width, start_y);
+    stroke(255, 128);
+    line(0, goal_y, width, goal_y);
+    line(0, start_y, width, start_y);
 
- fill(255, 200);
- for(int i = 0; i < 3; i++)
- rect(goal_x[i], goal_y, box_w, box_h);
+    fill(255, 200);
+    for(int i = 0; i < 3; i++)
+    rect(goal_x[i], goal_y, box_w, box_h);
 
 }

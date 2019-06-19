@@ -11,7 +11,7 @@ float box_w, box_h;
 float goal_y;
 float start_y;
 float []goal_x = new float[3];
-int state = -1; 
+int state = 0; 
 float rectW;
 int start_index = 200;
 Table a;
@@ -20,6 +20,13 @@ int []btype;
 int index = 0; 
 float my_timer;
 float falling_time;
+int score;
+
+void keyPressed(){
+    if (key == 'p') {
+        state = 1;
+    }
+}
 
 void setup() {
     size(480, 640, P3D);
@@ -51,10 +58,10 @@ void draw() {
     draw_image_processing();
     draw_my_game();
 
-    if(state == -1) {
+    if(state == 0) {
         text("Press p-key to start a game!", width/2, height/2); 
     }
-    else if(state == 3) { 
+    else if(state == 1) { 
         //play game
         if(abs(my_timer - falling_time - btime[index]) < 0.01) {
             add_box(btype[index]);
@@ -62,7 +69,9 @@ void draw() {
         }
         if (index >= a.getRowCount() ) { index = 0; } 
         draw_my_game();
+        song.play();
         text(my_timer, width/2, 20);
+        text("score: " + score, width/1.2, 20);
         my_timer = my_timer + 1.0/60.0; 
     }
 }

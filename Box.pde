@@ -21,12 +21,32 @@ class Box {
     boolean compare() {
         Vec2 pos = box2d.getBodyPixelCoord(body);
         //pos.y is the box current positon
-        if (abs(pos.y - goal_y) < box_h/2.0 + box_h && keyPressed && key == ' '){
-            fill(255);
-            ts = 16;
-            textSize(ts);
-            text("GREAT", pos.x, pos.y - box_h);
-            killBody();
+        if (abs(pos.y - goal_y) < box_h/2.0 + box_h && keyPressed){
+            if (pos.x > 0 && pos.x < 140 && key == 'a'){
+                show_snapshot();
+                score += 100;
+                fill(255);
+                ts = 16;
+                textSize(ts);
+                text("Great", pos.x, pos.y - box_h);
+                killBody();
+            } else if (pos.x > 140 && pos.x < 280 && key == 's') {
+                show_snapshot();
+                score += 100;
+                fill(255);
+                ts = 16;
+                textSize(ts);
+                text("Great", pos.x, pos.y - box_h);
+                killBody();
+            } else if (pos.x > 280 && pos.x < 420 && key == 'd') {
+                show_snapshot();
+                score += 100;
+                fill(255);
+                ts = 16;
+                textSize(ts);
+                text("Great", pos.x, pos.y - box_h);
+                killBody();
+            }
             return true;
         }
         return false;
